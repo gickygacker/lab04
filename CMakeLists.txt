@@ -16,7 +16,7 @@ if(BUILD_EXAMPLES)
     add_subdirectory(solver_application)
 endif()
 
-install(TARGETS formatter formatter_ex hello_world solver
+install(TARGETS formatter formatter_ex hello_world_application solver_application solver_lib
     EXPORT formatter-config
     ARCHIVE DESTINATION lib
     LIBRARY DESTINATION lib
