@@ -1,0 +1,30 @@
+version: 1.0.{build}
+
+image: Visual Studio 2022 
+
+platform:
+  - x64
+
+configuration:
+  - Release
+  - Debug
+
+install:
+  - git submodule update --init --recursive  
+
+before_build:
+  - mkdir build
+  - cd build
+  - cmake -G "Visual Studio 17 2022" -A x64 -DBUILD_EXAMPLES=ON ..
+
+build:
+  project: build\formatter.sln  
+  parallel: true  
+  verbosity: minimal
+
+test_script:
+  - cd build
+  - if exist Debug\hello_world.exe Debug\hello_world.exe
+  - if exist Release\hello_world.exe Release\hello_world.exe
+  - if exist Debug\solver.exe Debug\solver.exe
+  - if exist Release\solver.exe Release\solver.exe
