@@ -1,0 +1,5 @@
+image: Visual Studio 2019
+
+build_script:
+  - cmake -H. -B_build
+  - cmake --build _build
